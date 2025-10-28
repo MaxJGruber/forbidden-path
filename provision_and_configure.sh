@@ -1,9 +1,11 @@
 #!/bin/bash
 
-read -p "Enter the quantity of EC2 instance to provision (1-10): " server_count
+read -p "Enter the quantity of EC2 instance to provision (1-10) (default: 1):" server_count
+server_count=${server_count:-1}
 echo "Very well. We shall provision $server_count instances for you."
 
-read -p "Ubuntu 24 or Amazon Linux 2023 (ubuntu/amazon)" type
+read -p "Ubuntu 24 or Amazon Linux 2023 (ubuntu/amazon) (default: ubuntu)" type
+type=${type:-ubuntu}
 echo "You chose $type instances."
 
 # 1. Provision with Terraform

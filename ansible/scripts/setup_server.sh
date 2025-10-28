@@ -3,6 +3,6 @@ set -euo pipefail
 
 sudo apt-get update -y
 sudo apt-get install -y nginx
-sudo systemctl enable --now nginx
-sudo ufw allow in "nginx"
+sudo systemctl enable nginx
+sudo systemctl start nginx
 echo "Nginx ready on $(hostname)"

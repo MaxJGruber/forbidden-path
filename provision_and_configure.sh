@@ -1,9 +1,12 @@
 #!/bin/bash
 
+read -p "Enter the quantity of EC2 instance to provision (1-10): " server_count
+echo "Very well. We shall provision $server_count instances for you."
+
 # 1. Provision with Terraform
 cd terraform
 terraform init -upgrade
-terraform apply -auto-approve
+terraform apply -auto-approve -var="quantity=$server_count"
 TF_OUTPUT_JSON=$(terraform output -json)          # capture outputs
 cd ..
  

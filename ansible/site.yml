@@ -1,0 +1,8 @@
+---
+- name: Configure fresh EC2 hosts
+  hosts: freshly_built
+  become: true
+
+  tasks:
+    - name: Run local Bash installer
+      script: scripts/setup_server.sh

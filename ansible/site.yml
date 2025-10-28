@@ -1,8 +1,20 @@
 ---
 - name: Configure fresh EC2 hosts
-  hosts: freshly_built
+  hosts: ec2_instances
   become: true
 
   tasks:
-    - name: Run local Bash installer
-      script: scripts/setup_server.sh
+    - name: Create an index.html File from Template
+      template:
+        src: "../templates/index.html.j2"
+        dest: "/var/www/html/index.html"
+
+    - name: Copy the shell File
+      copy:
+        src: "./scripts/setup_server.sh"
+        dest: "/home/ubuntu/setup_server.sh"
+        mode: "700"
+
+    - name: Run the Shell Script Remotely
+      become: true
+      shell: "/home/ubuntu/setup_server.sh"

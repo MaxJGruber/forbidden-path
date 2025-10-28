@@ -1,6 +1,3 @@
-# 1. Set region
-# 2. Provision instance
-
 provider "aws" {
   region=var.region
 }
@@ -14,4 +11,8 @@ resource "aws_instance" "ec2" {
   tags = {
     Name = "Max-Instance-${count.index + 1}"
   }
+}
+
+output "public_ips" {
+  value = aws_instance.ec2[*].public_ip
 }

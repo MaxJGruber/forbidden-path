@@ -7,3 +7,8 @@ variable "key_pair_name" {
     type = string
     default = "paris-key-max"
 }
+
+variable "quantity" {
+    type = number
+    default = 1
+}
